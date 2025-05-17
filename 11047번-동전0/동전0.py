@@ -16,6 +16,7 @@ parts = line.split()
 n = int(parts[0])
 k = int(parts[1])
 
+## 테스트 
 coins = []
 for i in range(n):
     coin = int(input())
