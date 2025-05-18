@@ -1,41 +1,43 @@
 #  **************************************************************************  #
 #                                                                              #
 #                                                       :::    :::    :::      #
-#    Problem Number: 11047                             :+:    :+:      :+:     #
+#    Problem Number: 1181                              :+:    :+:      :+:     #
 #                                                     +:+    +:+        +:+    #
 #    By: hyoin1105 <boj.kr/u/hyoin1105>              +#+    +#+          +#+   #
 #                                                   +#+      +#+        +#+    #
-#    https://boj.kr/11047                          #+#        #+#      #+#     #
-#    Solved: 2025/05/17 18:39:16 by hyoin1105     ###          ###   ##.kr     #
+#    https://boj.kr/1181                           #+#        #+#      #+#     #
+#    Solved: 2025/05/18 18:43:47 by hyoin1105     ###          ###   ##.kr     #
 #                                                                              #
 #  **************************************************************************  #
-line = input()
+# input_data = """
+# 13
+# but
+# i
+# wont
+# hesitate
+# no
+# more
+# no
+# more
+# it
+# cannot
+# wait
+# im
+# yours
+# """.strip().split("\n")
 
-parts = line.split()
+#n = int(input())
+n = int(input())
 
-n = int(parts[0])
-k = int(parts[1])
+words = []
 
-coins = []
-for i in range(n):
-    coin = int(input())
-    coins.append(coin)
+for _ in range(n):
+    word = input().strip()
+    words.append(word)
 
-coins.sort(reverse=True)
-
-count = 0
-used = 0
-
-for coin in coins:
-    if k == 0:
-        break 
+words = list(set(words))
     
-    if k >= coin: 
-        used = k // coin 
-        count += used 
-        k -= coin * used 
+words.sort(key=lambda x:(len(x), x))
 
-print(count)
-    
-
-
+for word in words:
+    print(word)

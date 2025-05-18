@@ -1,41 +1,37 @@
 #  **************************************************************************  #
 #                                                                              #
 #                                                       :::    :::    :::      #
-#    Problem Number: 11047                             :+:    :+:      :+:     #
+#    Problem Number: 7785                              :+:    :+:      :+:     #
 #                                                     +:+    +:+        +:+    #
 #    By: hyoin1105 <boj.kr/u/hyoin1105>              +#+    +#+          +#+   #
 #                                                   +#+      +#+        +#+    #
-#    https://boj.kr/11047                          #+#        #+#      #+#     #
-#    Solved: 2025/05/17 18:39:16 by hyoin1105     ###          ###   ##.kr     #
+#    https://boj.kr/7785                           #+#        #+#      #+#     #
+#    Solved: 2025/05/18 19:01:42 by hyoin1105     ###          ###   ##.kr     #
 #                                                                              #
 #  **************************************************************************  #
-line = input()
+input_data = """
+4
+Baha enter
+Askar enter
+Baha leave
+Artem enter
+""".strip().split('\n')
 
-parts = line.split()
+#n = input_data[0]
+n = int(input())
+office = set()
 
-n = int(parts[0])
-k = int(parts[1])
+for _ in range(n):
+    name, status = input().split()
+    if status == "enter":
+        office.add(name)
+    else:
+        office.remove(name)
 
-coins = []
-for i in range(n):
-    coin = int(input())
-    coins.append(coin)
+for name in sorted(office, reverse=True):
+    print(name)
 
-coins.sort(reverse=True)
 
-count = 0
-used = 0
-
-for coin in coins:
-    if k == 0:
-        break 
-    
-    if k >= coin: 
-        used = k // coin 
-        count += used 
-        k -= coin * used 
-
-print(count)
     
 
 

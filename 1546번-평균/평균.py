@@ -1,41 +1,26 @@
 #  **************************************************************************  #
 #                                                                              #
 #                                                       :::    :::    :::      #
-#    Problem Number: 11047                             :+:    :+:      :+:     #
+#    Problem Number: 1546                              :+:    :+:      :+:     #
 #                                                     +:+    +:+        +:+    #
 #    By: hyoin1105 <boj.kr/u/hyoin1105>              +#+    +#+          +#+   #
 #                                                   +#+      +#+        +#+    #
-#    https://boj.kr/11047                          #+#        #+#      #+#     #
-#    Solved: 2025/05/17 18:39:16 by hyoin1105     ###          ###   ##.kr     #
+#    https://boj.kr/1546                           #+#        #+#      #+#     #
+#    Solved: 2025/05/18 17:37:31 by hyoin1105     ###          ###   ##.kr     #
 #                                                                              #
 #  **************************************************************************  #
-line = input()
+import sys
+sys.stdin = open("./input.txt", "r")
 
-parts = line.split()
+n = int(input())
+scores = list(map(int, input().split()))
 
-n = int(parts[0])
-k = int(parts[1])
+max_score = max(scores)
+new_scores = []
 
-coins = []
-for i in range(n):
-    coin = int(input())
-    coins.append(coin)
+for score in scores:
+    new_score = (score / max_score * 100)
+    new_scores.append(new_score)
 
-coins.sort(reverse=True)
-
-count = 0
-used = 0
-
-for coin in coins:
-    if k == 0:
-        break 
-    
-    if k >= coin: 
-        used = k // coin 
-        count += used 
-        k -= coin * used 
-
-print(count)
-    
-
-
+average = sum(new_scores) / n
+print(average)

@@ -1,41 +1,25 @@
 #  **************************************************************************  #
 #                                                                              #
 #                                                       :::    :::    :::      #
-#    Problem Number: 11047                             :+:    :+:      :+:     #
+#    Problem Number: 10814                             :+:    :+:      :+:     #
 #                                                     +:+    +:+        +:+    #
 #    By: hyoin1105 <boj.kr/u/hyoin1105>              +#+    +#+          +#+   #
 #                                                   +#+      +#+        +#+    #
-#    https://boj.kr/11047                          #+#        #+#      #+#     #
-#    Solved: 2025/05/17 18:39:16 by hyoin1105     ###          ###   ##.kr     #
+#    https://boj.kr/10814                          #+#        #+#      #+#     #
+#    Solved: 2025/05/18 18:14:03 by hyoin1105     ###          ###   ##.kr     #
 #                                                                              #
 #  **************************************************************************  #
-line = input()
+import sys
+sys.stdin = open("./input.txt", "r")
 
-parts = line.split()
+n = int(input())
+members = []
 
-n = int(parts[0])
-k = int(parts[1])
+for _ in range(n):
+    age, name = input().split()
+    members.append((int(age), name))
 
-coins = []
-for i in range(n):
-    coin = int(input())
-    coins.append(coin)
+members.sort(key=lambda x: x[0])
 
-coins.sort(reverse=True)
-
-count = 0
-used = 0
-
-for coin in coins:
-    if k == 0:
-        break 
-    
-    if k >= coin: 
-        used = k // coin 
-        count += used 
-        k -= coin * used 
-
-print(count)
-    
-
-
+for age, name in members:
+    print(age, name)
